@@ -1,0 +1,62 @@
+﻿《下山的人》本体代码版
+======================
+
+只含代码，不含引擎、立绘、字体、GUI 素材。三步跑起来（约 5 分钟）。
+
+第一步：装 Ren'Py SDK
+--------------------
+下载 8.5.3 版：
+    https://www.renpy.org/dl/8.5.3/renpy-8.5.3-sdk.zip
+解压到任意目录，比如 D:\renpy-8.5.3-sdk
+
+第二步：补齐素材
+----------------
+在本目录打开 PowerShell，执行：
+
+    python tools\bootstrap.py --sdk "D:\renpy-8.5.3-sdk"
+
+它会（不覆盖已有文件）：
+  1. 从 SDK 复制 gui.rpy / screens.rpy / options.rpy
+  2. 复制 game/gui/ 素材和中文字体
+  3. 生成六位角色的占位立绘 + 背景图
+
+想用真立绘：覆盖 game\images\characters\<角色id>\normal.png
+（建议 900×1300、透明底）
+
+第三步：启动
+------------
+    D:\renpy-8.5.3-sdk\renpy.exe .
+
+想用真模型：
+    $env:ZHIPU_API_KEY="你的key"
+
+放到 GitHub 上
+--------------
+GitHub Desktop：File → Add local repository → 选本文件夹
+→ 提示不是 Git 仓库就点 create a repository
+→ 右上角 Publish repository
+详见 docs\github-desktop.md
+
+目录结构
+--------
+game\
+  script.rpy          主流程
+  screens_course.rpy  课程列表 + 学习路径图
+  hud.rpy             进度 HUD、选人界面
+  gal_setup.rpy       引擎接入、状态机
+  engine\             教学引擎（纯 Python，零依赖）
+    checks.py         四条硬校验 + 覆盖度 + 相似度
+    novice.py         反转时的「初学者」
+    teacher.py        主讲生成：人设提示词 + 校验
+    planner.py        课程规划：联网检索 → 生成课程
+    llm.py            模型调用（智谱 / DeepSeek）
+    teachcache.py     台词缓存
+  content\            角色卡、课程、台词缓存
+tools\
+  bootstrap.py        补素材
+  bake_teach.py       预生成台词缓存
+  eval_teach.py       讲解生成评测
+  eval_reversal.py    反转判定评测
+docs\architecture.md  架构与设计取舍
+
+代码许可：MIT（见 LICENSE）。立绘/字体授权见 NOTICE。

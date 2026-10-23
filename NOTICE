@@ -1,0 +1,32 @@
+# 第三方素材与许可声明
+
+本仓库的**代码**（`game/engine/*.py`、`game/*.rpy`、`tools/*.py`、文档）适用根目录的 MIT 许可证。
+
+以下内容**不在 MIT 授权范围内**：
+
+## 1. 角色立绘
+
+`game/images/characters/` 下的六张立绘是“AI 娘”拟人化作品，**版权归原作者所有**。
+本仓库仅作非商业的教学演示用途收录；如需商用或再分发，请自行取得原作者授权。
+
+替换方法：把自己的立绘覆盖为同名文件（`<角色id>/normal.png`，建议 900×1300、透明底）。
+
+## 2. 中文字体
+
+`game/fonts/SourceHanSansLite.ttf` 来自 Ren'Py 8.5.3 SDK（思源黑体精简版），
+按其原始许可（SIL Open Font License）分发。
+
+## 3. Ren'Py 引擎与 GUI 素材
+
+`game/gui/`、`game/gui.rpy`、`game/screens.rpy`、`game/options.rpy` 来自 Ren'Py 官方模板，
+遵循 Ren'Py 自身的许可（见 https://www.renpy.org/doc/html/license.html）。
+
+## 4. 背景图
+
+`game/images/bg/corridor.png` 由程序生成（见 `tools/import_art.py` 同目录的历史脚本），
+可自由替换。
+
+---
+
+如果你 fork 了本仓库并**不打算商用**，以上内容按现状保留即可；
+若要发布到商店或用于商业产品，请先替换立绘与字体，或取得相应授权。
